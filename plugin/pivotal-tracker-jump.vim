@@ -17,7 +17,8 @@ function! s:pivotal_tracker_jump_gx()
     endif
   endif
 
-  call netrw#BrowseX(expand(exists("g:netrw_gx")? g:netrw_gx : '<cfile>'), 0)
+  call netrw#BrowseX(expand(exists("g:netrw_gx")? g:netrw_gx : '<cfile>'),
+    \ netrw#CheckIfRemote())
 endfunction
 
 nnoremap <silent> gx :call <sid>pivotal_tracker_jump_gx()<cr>
