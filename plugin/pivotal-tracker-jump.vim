@@ -22,4 +22,4 @@ function! s:pivotal_tracker_jump_gx()
     \ netrw#CheckIfRemote())
 endfunction
 
-nnoremap <buffer> <silent> gx :call <sid>pivotal_tracker_jump_gx()<cr>
+nnoremap <silent> gx :call <sid>pivotal_tracker_jump_gx()<cr>
