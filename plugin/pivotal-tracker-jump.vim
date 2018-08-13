@@ -12,13 +12,12 @@ function! s:pivotal_tracker_jump_gx()
     let ticketid = substitute(expand('<cWORD>'), '\D', '', 'g')
     if ticketid =~ '^\d\{8,12\}$'
       call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx :
-        \ 'https://www.pivotaltracker.com/story/show/'.ticketid)), netrw#CheckIfRemote())
+        \ 'https://www.pivotaltracker.com/story/show/'.ticketid)), 0)
       return
     endif
   endif
 
-  call netrw#BrowseX(expand(exists("g:netrw_gx")? g:netrw_gx : '<cfile>'),
-    \ netrw#CheckIfRemote())
+  call netrw#BrowseX(expand(exists("g:netrw_gx")? g:netrw_gx : '<cfile>'), 0)
 endfunction
 
 nnoremap <silent> gx :call <sid>pivotal_tracker_jump_gx()<cr>
