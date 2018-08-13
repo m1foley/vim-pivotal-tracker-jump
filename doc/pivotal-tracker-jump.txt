@@ -1,0 +1,16 @@
+*pivotal-tracker-jump.txt*  Jump to the Pivotal Tracker story under the cursor
+
+INTRODUCTION                                    *pivotal-tracker-jump*
+
+Pivotal Tracker stories are referenced in Git commit messages like
+`[#12345678]`. When the cursor is on the ticket reference, press |gx| to jump
+to the story in your web browser.
+
+ABOUT                                           *pivotal-tracker-jump-about*
+
+Author: Mike Foley
+
+Grab the latest version or report an issue on GitHub:
+http://github.com/m1foley/vim-pivotal-tracker-jump
+
+vim:tw=78:et:ft=help:norl:
