@@ -8,7 +8,7 @@ endif
 let g:loaded_pivotal_tracker_jump = 1
 
 function! s:pivotal_tracker_jump_gx()
-  if getline('.') =~ '\[#\d\{8,10\}\]'
+  if getline('.') =~ '\[#\d\{8,12\}\]'
     let cfile = expand('<cfile>')
     if !filereadable(cfile)
       let cfile = substitute(cfile, '#', '', '')
