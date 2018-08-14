@@ -17,21 +17,21 @@ function! s:pivotal_tracker_jump_gx()
   let l:matchno = search(l:regexp, 'bWcnp', line('.'))
   if l:matchno
     " If cursor is on the end bracket, move it backwards so <cword> will match
-    " the last ticket ID
+    " the last story ID
     if l:matchno == 2
       normal! ge
     endif
 
-    let l:ticketid = expand('<cword>')
+    let l:storyid = expand('<cword>')
 
-    " If cursor is on a leading verb, move to first ticket ID
-    if l:ticketid =~? '^\(finishes\|fixes\|delivers\)$'
+    " If cursor is on a leading verb, move to first story ID
+    if l:storyid =~? '^\(finishes\|fixes\|delivers\)$'
       normal! W
-      let l:ticketid = expand('<cword>')
+      let l:storyid = expand('<cword>')
     endif
 
-    if l:ticketid =~ '^[0-9]\{8,12\}$'
-      call netrw#BrowseX('https://www.pivotaltracker.com/story/show/'.l:ticketid, 0)
+    if l:storyid =~ '^[0-9]\{8,12\}$'
+      call netrw#BrowseX('https://www.pivotaltracker.com/story/show/'.l:storyid, 0)
       return
     endif
   endif
