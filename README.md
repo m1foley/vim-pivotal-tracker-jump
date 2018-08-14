@@ -1,8 +1,10 @@
 vim-pivotal-tracker-jump
 ========================
 
-Pivotal Tracker stories are referenced in Git commit messages like
-`[#12345678]`. When the cursor is on the ticket reference, press `gx` to jump
+Using the [GitHub integration](https://www.pivotaltracker.com/help/articles/github_integration/), Pivotal Tracker stories can be referenced in Git commit messages like `[#TRACKER_STORY_ID]`.
+
+This plugin adds functionality to `gx`, which normally opens URLs in your
+default web browser. When the cursor is on a story reference press `gx` to jump
 to the story in your web browser.
 
 Installation
