@@ -9,10 +9,10 @@ let g:loaded_pivotal_tracker_jump = 1
 
 function! s:pivotal_tracker_jump_gx()
   if getline('.') =~ '\[\(\(\#\d\{8,12\}\)[, ]*\)\+\]'
-    let ticketid = substitute(expand('<cWORD>'), '\D', '', 'g')
-    if ticketid =~ '^\d\{8,12\}$'
+    let l:ticketid = substitute(expand('<cWORD>'), '\D', '', 'g')
+    if l:ticketid =~ '^\d\{8,12\}$'
       call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx :
-        \ 'https://www.pivotaltracker.com/story/show/'.ticketid)), 0)
+        \ 'https://www.pivotaltracker.com/story/show/'.l:ticketid)), 0)
       return
     endif
   endif
