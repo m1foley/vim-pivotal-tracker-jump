@@ -2,7 +2,7 @@
 " Maintainer:   Mike Foley
 " Version:      1.0
 
-if exists('g:loaded_pivotal_tracker_jump')
+if exists('g:loaded_pivotal_tracker_jump') || &compatible
   finish
 endif
 let g:loaded_pivotal_tracker_jump = 1
