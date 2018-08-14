@@ -8,18 +8,28 @@ endif
 let g:loaded_pivotal_tracker_jump = 1
 
 function! s:pivotal_tracker_jump_gx()
-  " The two expressions surrounding \| are identical except the first one
-  " matches when cursor is on the end bracket. This is referenced later
-  " when l:regexno == 2
-  let l:regexno = search('\(\[\(\(\#[0-9]\{8,12\}\)[, ]*\)\+\%#\]\)\|\(\[\(\(\#[0-9]\{8,12\}\)[, ]*\)\+\]\)', 'bWcnp', line('.'))
-  if l:regexno
+  " Creates two regexps joined by \| which are identical except the first one
+  " matches when the cursor is on the end bracket. This is referenced later
+  " when l:matchno == 2
+  let l:regexp = '\(\[\([a-zA-Z]\+s\s\+\)\?\(\(\#[0-9]\{8,12\}\)[, ]*\)\+\%#\]\)'
+  let l:regexp = l:regexp . '\|' . substitute(l:regexp, '\\%#', '', '')
+
+  let l:matchno = search(l:regexp, 'bWcnp', line('.'))
+  if l:matchno
     " If cursor is on the end bracket, move it backwards so <cword> will match
     " the last ticket ID
-    if l:regexno == 2
+    if l:matchno == 2
       normal! ge
     endif
 
     let l:ticketid = expand('<cword>')
+
+    " If cursor is on a leading verb, move to first ticket ID
+    if l:ticketid =~? '^\(finishes\|fixes\|delivers\)$'
+      normal! W
+      let l:ticketid = expand('<cword>')
+    endif
+
     if l:ticketid =~ '^[0-9]\{8,12\}$'
       call netrw#BrowseX('https://www.pivotaltracker.com/story/show/'.l:ticketid, 0)
       return
