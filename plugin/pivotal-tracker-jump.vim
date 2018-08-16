@@ -16,6 +16,9 @@ function! s:pivotal_tracker_jump_gx()
 
   let l:matchno = search(l:regexp, 'bWcnp', line('.'))
   if l:matchno
+    " save cursor position in case it needs to get moved
+    let l:orig_cursor_pos = getcurpos()
+
     " If cursor is on the end bracket, move it backwards so <cword> will match
     " the last story ID
     if l:matchno == 2
@@ -29,6 +32,9 @@ function! s:pivotal_tracker_jump_gx()
       normal! W
       let l:storyid = expand('<cword>')
     endif
+
+    " restore cursor in case it was moved
+    call setpos('.', l:orig_cursor_pos)
 
     if l:storyid =~ '^[0-9]\{8,12\}$'
       call netrw#BrowseX('https://www.pivotaltracker.com/story/show/'.l:storyid, 0)
