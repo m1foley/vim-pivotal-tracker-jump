@@ -1,6 +1,6 @@
 " pivotal-tracker-jump.vim
 " Maintainer:   Mike Foley
-" Version:      1.0
+" Version:      1.1
 
 if exists('g:loaded_pivotal_tracker_jump') || &compatible
   finish
