@@ -7,6 +7,10 @@ if exists('g:loaded_pivotal_tracker_jump') || &compatible
 endif
 let g:loaded_pivotal_tracker_jump = 1
 
+if !exists('g:pivotal_tracker_jump_url')
+  let g:pivotal_tracker_jump_url = 'https://www.pivotaltracker.com/story/show/'
+endif
+
 function! s:pivotal_tracker_jump_gx()
   " Creates two regexps joined by \| which are identical except the first one
   " matches when the cursor is on the end bracket. This is referenced later
@@ -37,7 +41,7 @@ function! s:pivotal_tracker_jump_gx()
     call setpos('.', l:orig_cursor_pos)
 
     if l:storyid =~ '^[0-9]\{8,12\}$'
-      call netrw#BrowseX('https://www.pivotaltracker.com/story/show/'.l:storyid, 0)
+      call netrw#BrowseX(g:pivotal_tracker_jump_url . l:storyid, 0)
       return
     endif
   endif

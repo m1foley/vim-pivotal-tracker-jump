@@ -1,6 +1,6 @@
 *pivotal-tracker-jump.txt*  Jump to the Pivotal Tracker story under the cursor
 
-DESCRIPTION                                    *pivotal-tracker-jump*
+DESCRIPTION                                             *pivotal-tracker-jump*
 
 Using the GitHub integration, Pivotal Tracker stories can be referenced in Git
 commit messages like `[#TRACKER_STORY_ID]`.
@@ -9,7 +9,15 @@ This plugin adds functionality to |gx|, which normally opens URLs in your
 default web browser. When the cursor is on a story reference press |gx| to
 jump to the story in your web browser.
 
-ABOUT                                           *pivotal-tracker-jump-about*
+CONFIGURATION                             *pivotal-tracker-jump-configuration*
+
+The URL can be customized, like for enterprise accounts which have their own
+domain:
+>
+ " This is the default value
+ let g:pivotal_tracker_jump_url = 'https://www.pivotaltracker.com/story/show/'
+<
+ABOUT                                             *pivotal-tracker-jump-about*
 
 Author: Mike Foley
 
