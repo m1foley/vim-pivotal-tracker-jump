@@ -16,6 +16,17 @@ Using [vim-plug](https://github.com/junegunn/vim-plug):
 Plug 'm1foley/vim-pivotal-tracker-jump'
 ```
 
+Customization
+-------------
+
+The URL can be customized, like for enterprise accounts which have their own
+domain:
+
+```vim
+" This is the default value
+let g:pivotal_tracker_jump_url = 'https://www.pivotaltracker.com/story/show/'
+```
+
 License
 -------
 
